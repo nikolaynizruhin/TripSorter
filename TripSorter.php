@@ -130,21 +130,17 @@ class TripSorter
      */
     public function setFirstLastCards()
     {
+        $arrival = [];
+        $departure = [];
+
         foreach ($this->cards as $key => $card) {
-            $isBegin = true;
-            $isEnd = true;
-            array_map(function($current) use ($card, &$isBegin, &$isEnd) {
-                if ($card != $current) {
-                    if ($card['from'] == $current['to']) {
-                        $isBegin = false;
-                    }
-                    if ($card['to'] == $current['from']) {
-                        $isEnd = false;
-                    }
-                }
-            }, $this->cards);
-            if ($isBegin) $this->firstCard = $card;
-            if ($isEnd) $this->lastCard = $card;
+            $arrival[] = $card['to'];
+            $departure[] = $card['from'];
+        }
+
+        foreach ($this->cards as $key => $card) {
+            if (!in_array($card['from'], $arrival)) $this->firstCard = $card;
+            if (!in_array($card['to'], $departure)) $this->lastCard = $card;
         }
     }
 }
