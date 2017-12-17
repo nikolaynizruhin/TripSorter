@@ -22,7 +22,7 @@ The API is to be an internal PHP API so it will only communicate with other part
 application, not server to server, nor server to client. Use PHP-doc to document the input and
 output your API accepts / returns.
 
-###Requirements
+### Requirements
 - Use object oriented PHP5 / python or javascript for the implementation.
 - Do not use any 3rd party framework. Start all code from scratch.
 - The structure of the code should be extendable to make building in support for any means of transportation / extra information required about a specific type of transportation easy.
